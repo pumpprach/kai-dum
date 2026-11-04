@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#153b31">
+  <meta name="description" content="ข้าวมันไก่จานโปรด อร่อยง่าย ๆ ในทุกวัน">
+  <title>มันไก่ — ข้าวมันไก่จานโปรด</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Kanit:wght@400;500;600;700;800&display=swap');
+
+    :root { --green:#153b31; --orange:#ee6b36; --cream:#fff9ee; --ink:#21352d; --muted:#68796e; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--cream); color:var(--ink); font-family:Kanit, sans-serif; }
+    button { font:inherit; cursor:pointer; }
+    a { color:inherit; text-decoration:none; }
+    .wrap { width:min(1180px, calc(100% - 48px)); margin:auto; }
+    .topline { padding:8px 16px; background:var(--green); color:#fff8e7; text-align:center; font-size:13px; letter-spacing:.02em; }
+    header { border-bottom:1px solid #e9e7db; background:var(--cream); }
+    .nav { height:76px; display:flex; align-items:center; justify-content:space-between; gap:22px; }
+    .brand { display:flex; align-items:center; gap:9px; font-size:27px; font-weight:800; letter-spacing:-.04em; white-space:nowrap; }
+    .brand-mark { width:38px; height:38px; display:grid; place-items:center; border-radius:12px; background:var(--orange); color:white; font-size:25px; line-height:1; transform:rotate(-9deg); }
+    .nav-links { display:flex; align-items:center; gap:32px; font-size:15px; font-weight:500; }
+    .nav-links a:hover { color:var(--orange); }
+    .nav-order { padding:10px 20px; border-radius:999px; background:var(--green); color:#fff; font-size:14px; font-weight:600; white-space:nowrap; }
+    .nav-order:hover { background:#245a48; }
+    .hero { min-height:610px; display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:40px; padding:55px 0 75px; }
+    .eyebrow { display:inline-flex; align-items:center; gap:8px; color:var(--orange); font-size:15px; font-weight:700; letter-spacing:.04em; }
+    .eyebrow::before { content:""; width:25px; height:2px; background:currentColor; }
+    h1 { margin:20px 0 16px; font-size:clamp(58px, 6.3vw, 96px); line-height:1.04; letter-spacing:-.07em; font-weight:800; }
+    h1 em { font-style:normal; color:var(--orange); }
+    .hero-copy { max-width:490px; color:var(--muted); font-size:20px; line-height:1.7; font-weight:400; }
+    .actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:34px; }
+    .btn { display:inline-flex; align-items:center; justify-content:center; gap:10px; min-height:51px; padding:11px 24px; border:0; border-radius:999px; font-weight:700; transition:transform .2s, background .2s; }
+    .btn:hover { transform:translateY(-3px); }
+    .btn-primary { background:var(--orange); color:white; box-shadow:0 10px 22px #ee6b362b; }
+    .btn-outline { background:transparent; border:1.5px solid var(--green); color:var(--green); }
+    .hero-note { display:flex; align-items:center; gap:11px; margin-top:38px; color:#5d6d62; font-size:14px; }
+    .note-icon { width:34px; height:34px; display:grid; place-items:center; border-radius:50%; background:#e9f0da; color:var(--green); }
+    .hero-visual { position:relative; min-height:480px; display:grid; place-items:center; border-radius:52% 48% 46% 54% / 44% 44% 56% 56%; background:#f6ad7f; overflow:visible; }
+    .hero-visual::before { content:""; position:absolute; inset:28px; border:2px solid #fff8; border-radius:inherit; }
+    .hero-visual::after { content:"✳"; position:absolute; top:-18px; right:19px; color:var(--orange); font-size:60px; }
+    .hero-food { width:min(92%, 560px); filter:drop-shadow(0 27px 22px #72432545); transform:rotate(-8deg); }
+    .food-badge { position:absolute; right:-22px; bottom:44px; width:145px; height:145px; display:grid; place-items:center; text-align:center; padding:20px; border:5px solid var(--cream); border-radius:50%; background:var(--green); color:white; font-size:21px; font-weight:700; line-height:1.3; transform:rotate(12deg); box-shadow:0 12px 25px #143b3133; }
+    .scribble { position:absolute; left:-25px; bottom:28px; color:var(--green); font-size:74px; transform:rotate(-20deg); }
+    .band { background:var(--green); color:#fff; }
+    .band-inner { display:flex; justify-content:center; flex-wrap:wrap; gap:24px 76px; padding:17px 0; font-size:15px; font-weight:500; }
+    .band-inner span::before { content:"✦"; margin-right:12px; color:#f2a376; }
+    .menu { padding:95px 0 105px; }
+    .section-head { display:flex; align-items:end; justify-content:space-between; gap:20px; margin-bottom:32px; }
+    .section-head h2, .order-intro h2 { margin:7px 0 0; font-size:clamp(38px, 4.2vw, 58px); line-height:1.15; letter-spacing:-.055em; }
+    .section-head p { max-width:310px; margin:0 0 5px; color:var(--muted); font-size:15px; line-height:1.6; }
+    .menu-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:18px; }
+    .card { display:flex; flex-direction:column; min-width:0; padding:18px; border:1px solid #e9e6d9; border-radius:24px; background:#fffdf7; transition:transform .2s, box-shadow .2s; }
+    .card:hover { transform:translateY(-5px); box-shadow:0 16px 28px #193b3012; }
+    .card-art { position:relative; height:222px; display:grid; place-items:center; overflow:hidden; border-radius:18px; background:#d9e8d3; }
+    .card:nth-child(2) .card-art { background:#f7dfca; }
+    .card:nth-child(3) .card-art { background:#efe6bd; }
+    .card-art svg { width:250px; max-width:93%; filter:drop-shadow(0 14px 10px #34542c30); transform:rotate(-10deg); }
+    .card:nth-child(2) .card-art svg { transform:rotate(8deg); }
+    .card:nth-child(3) .card-art svg { transform:rotate(-4deg); }
+    .card-tag { position:absolute; top:13px; left:13px; padding:5px 11px; border-radius:999px; background:#fffdf7; color:var(--green); font-size:12px; font-weight:700; }
+    .card-body { padding:19px 5px 2px; display:flex; flex:1; flex-direction:column; }
+    .card h3 { margin:0; font-size:23px; line-height:1.3; }
+    .card p { margin:6px 0 18px; color:var(--muted); font-size:14px; font-weight:400; line-height:1.6; }
+    .card-bottom { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:auto; }
+    .price { color:var(--green); font-family:'DM Sans', sans-serif; font-size:25px; font-weight:700; letter-spacing:-.04em; white-space:nowrap; }
+    .price small { margin-left:3px; font-family:Kanit, sans-serif; font-size:13px; font-weight:400; }
+    .add { width:40px; height:40px; border:0; border-radius:50%; background:var(--orange); color:#fff; font-family:'DM Sans', sans-serif; font-size:27px; line-height:1; transition:transform .2s; }
+    .add:hover { transform:scale(1.12); }
+    .order-zone { background:#edf1e5; padding:70px 0; }
+    .order-layout { display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:70px; }
+    .order-intro p { max-width:430px; color:var(--muted); line-height:1.7; }
+    .order-panel { padding:25px; border:1px solid #dce6d5; border-radius:25px; background:#fffdf7; box-shadow:0 14px 30px #163c310c; }
+    .order-panel h3 { margin:0 0 14px; font-size:23px; }
+    .order-list { min-height:70px; margin:0; padding:0; list-style:none; }
+    .order-list li { display:flex; justify-content:space-between; gap:12px; padding:10px 0; border-bottom:1px solid #ecece2; font-size:15px; }
+    .empty { color:#859186; font-size:14px; }
+    .order-total { display:flex; justify-content:space-between; align-items:center; margin:15px 0 18px; font-size:17px; font-weight:600; }
+    .order-total strong { font-family:'DM Sans', sans-serif; font-size:28px; }
+    .copy { width:100%; }
+    .copy-status { min-height:22px; margin:8px 0 0; color:var(--green); text-align:center; font-size:13px; }
+    footer { padding:27px 0; background:var(--green); color:#e7eee4; }
+    .footer-inner { display:flex; justify-content:space-between; gap:20px; font-size:13px; }
+    @media (max-width:800px) {
+      .nav-links { display:none; }
+      .hero { grid-template-columns:1fr; gap:30px; padding:60px 0 65px; }
+      .hero-visual { min-height:420px; }
+      .hero-food { max-width:460px; }
+      .menu-grid { grid-template-columns:1fr 1fr; }
+      .order-layout { gap:25px; }
+    }
+    @media (max-width:580px) {
+      .wrap { width:min(100% - 32px, 1180px); }
+      .nav { height:67px; }
+      .brand { font-size:24px; }
+      .hero { padding-top:43px; }
+      h1 { font-size:61px; }
+      .hero-copy { font-size:17px; }
+      .hero-visual { min-height:345px; margin:0 12px; }
+      .food-badge { width:106px; height:106px; right:-18px; bottom:20px; padding:10px; border-width:4px; font-size:16px; }
+      .scribble { font-size:50px; left:-17px; }
+      .band-inner { gap:9px 18px; font-size:12px; }
+      .menu { padding:65px 0 70px; }
+      .section-head { display:block; }
+      .section-head p { margin-top:12px; }
+      .menu-grid, .order-layout { grid-template-columns:1fr; }
+      .card-art { height:230px; }
+      .order-zone { padding:55px 0; }
+      .footer-inner { flex-direction:column; gap:5px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- ภาพอาหารเป็น SVG ในไฟล์เดียว จึงเปิดเว็บได้โดยไม่ต้องมีไฟล์รูปเพิ่มเติม -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="plate" viewBox="0 0 520 470">
+        <ellipse cx="265" cy="244" rx="228" ry="192" fill="#fbfbf2"/>
+        <ellipse cx="265" cy="244" rx="211" ry="176" fill="#e0e7d4"/>
+        <ellipse cx="265" cy="238" rx="196" ry="161" fill="#fffdf6"/>
+        <ellipse cx="207" cy="224" rx="102" ry="90" fill="#e6d9ae"/>
+        <ellipse cx="206" cy="213" rx="94" ry="80" fill="#fff7d9"/>
+        <path d="M124 218c40-31 120-45 164 0M133 243c43-26 112-24 145 4M147 186c47-19 99-15 129 8" fill="none" stroke="#f1e8c8" stroke-width="11" stroke-linecap="round"/>
+        <g transform="rotate(-25 320 240)">
+          <rect x="250" y="143" width="63" height="168" rx="29" fill="#bd884e"/>
+          <rect x="255" y="139" width="53" height="164" rx="26" fill="#f2c892"/>
+          <path d="M267 158v129M283 154v135M298 162v124" stroke="#fff0d2" stroke-width="4" stroke-linecap="round"/>
+          <rect x="306" y="144" width="62" height="166" rx="29" fill="#bb8249"/>
+          <rect x="312" y="139" width="52" height="165" rx="26" fill="#e9b77c"/>
+          <path d="M323 160v126M339 154v135M354 163v122" stroke="#ffe0ac" stroke-width="4" stroke-linecap="round"/>
+          <rect x="362" y="155" width="57" height="146" rx="28" fill="#c08a55"/>
+          <rect x="367" y="150" width="48" height="146" rx="24" fill="#f2c58c"/>
+          <path d="M379 167v111M395 164v111" stroke="#fff1d3" stroke-width="4" stroke-linecap="round"/>
+        </g>
+        <g fill="#80a87c" stroke="#e4f0cf" stroke-width="5">
+          <ellipse cx="335" cy="339" rx="37" ry="20" transform="rotate(-15 335 339)"/>
+          <ellipse cx="386" cy="316" rx="37" ry="20" transform="rotate(-15 386 316)"/>
+          <ellipse cx="402" cy="269" rx="33" ry="18" transform="rotate(-15 402 269)"/>
+        </g>
+        <circle cx="94" cy="324" r="50" fill="#f9f9ed" stroke="#d9dfd0" stroke-width="8"/>
+        <circle cx="94" cy="324" r="38" fill="#8e3c22"/>
+        <circle cx="78" cy="311" r="4" fill="#da8d44"/><circle cx="108" cy="333" r="5" fill="#de9c4d"/><circle cx="99" cy="301" r="3" fill="#e5aa55"/>
+        <path d="M116 128c23-20 29-17 38 1M356 102c18-16 28-15 42-2" fill="none" stroke="#4c8957" stroke-width="7" stroke-linecap="round"/>
+        <circle cx="150" cy="130" r="9" fill="#5b9b62"/><circle cx="398" cy="101" r="8" fill="#5b9b62"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <div class="topline">ข้าวมันไก่จานโปรดของทุกวัน • อร่อยแบบเรียบง่าย</div>
+  <header>
+    <nav class="nav wrap" aria-label="เมนูหลัก">
+      <a class="brand" href="#home"><span class="brand-mark">✳</span>มันไก่</a>
+      <div class="nav-links"><a href="#home">หน้าแรก</a><a href="#menu">เมนูของเรา</a><a href="#order">สรุปออเดอร์</a></div>
+      <a class="nav-order" href="#order">สั่งเลย ↗</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero wrap" id="home">
+      <div>
+        <span class="eyebrow">อร่อยได้ทุกมื้อ</span>
+        <h1>หิวเมื่อไหร่<br>ก็ต้อง <em>มันไก่</em></h1>
+        <p class="hero-copy">ข้าวมันไก่นุ่ม ๆ ข้าวหอม ๆ พร้อมน้ำจิ้มรสจัดจ้าน จานง่าย ๆ ที่กินแล้วอยากกลับมาซ้ำ</p>
+        <div class="actions"><a class="btn btn-primary" href="#menu">ดูเมนูเลย <span>↗</span></a><a class="btn btn-outline" href="#order">สรุปออเดอร์ <span>→</span></a></div>
+        <div class="hero-note"><span class="note-icon">✓</span> เลือกเมนูแล้วคัดลอกรายการสั่งซื้อได้ทันที</div>
+      </div>
+      <div class="hero-visual" aria-label="ภาพประกอบจานข้าวมันไก่">
+        <svg class="hero-food" role="img" aria-label="ข้าวมันไก่พร้อมน้ำจิ้มและแตงกวา"><use href="#plate"/></svg>
+        <span class="food-badge">อิ่ม อร่อย<br>ทุกคำ!</span>
+        <span class="scribble" aria-hidden="true">↗</span>
+      </div>
+    </section>
+
+    <div class="band"><div class="band-inner wrap"><span>ไก่นุ่ม</span><span>ข้าวหอม</span><span>น้ำจิ้มเด็ด</span><span>อิ่มแบบมีความสุข</span></div></div>
+
+    <section class="menu wrap" id="menu">
+      <div class="section-head"><div><span class="eyebrow">MENU</span><h2>เมนูที่อยากให้ลอง</h2></div><p>เลือกจานโปรดของคุณ แล้วกดปุ่ม + เพื่อเพิ่มลงในรายการสั่งซื้อ</p></div>
+      <div class="menu-grid">
+        <article class="card">
+          <div class="card-art"><span class="card-tag">ยอดนิยม</span><svg role="img" aria-label="ข้าวมันไก่ต้ม"><use href="#plate"/></svg></div>
+          <div class="card-body"><h3>ข้าวมันไก่ต้ม</h3><p>ไก่เนื้อนุ่มกับข้าวมันหอม ๆ เมนูคลาสสิกที่กินได้ทุกวัน</p><div class="card-bottom"><span class="price">฿55<small>/ จาน</small></span><button class="add" type="button" data-name="ข้าวมันไก่ต้ม" data-price="55" aria-label="เพิ่มข้าวมันไก่ต้ม">+</button></div></div>
+        </article>
+        <article class="card">
+          <div class="card-art"><span class="card-tag">กรอบถูกใจ</span><svg role="img" aria-label="ข้าวมันไก่ทอด"><use href="#plate"/></svg></div>
+          <div class="card-body"><h3>ข้าวมันไก่ทอด</h3><p>ไก่ทอดสีทองกรอบนอกนุ่มใน จับคู่ข้าวมันแบบลงตัว</p><div class="card-bottom"><span class="price">฿60<small>/ จาน</small></span><button class="add" type="button" data-name="ข้าวมันไก่ทอด" data-price="60" aria-label="เพิ่มข้าวมันไก่ทอด">+</button></div></div>
+        </article>
+        <article class="card">
+          <div class="card-art"><span class="card-tag">เลือกไม่ถูกต้องจานนี้</span><svg role="img" aria-label="ข้าวมันไก่ผสม"><use href="#plate"/></svg></div>
+          <div class="card-body"><h3>ข้าวมันไก่ผสม</h3><p>ได้ทั้งไก่ต้มและไก่ทอดในจานเดียว อร่อยครบแบบไม่ต้องเลือก</p><div class="card-bottom"><span class="price">฿65<small>/ จาน</small></span><button class="add" type="button" data-name="ข้าวมันไก่ผสม" data-price="65" aria-label="เพิ่มข้าวมันไก่ผสม">+</button></div></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="order-zone" id="order">
+      <div class="order-layout wrap">
+        <div class="order-intro"><span class="eyebrow">YOUR ORDER</span><h2>พร้อมอิ่มแล้ว<br>หรือยัง?</h2><p>กดเพิ่มเมนูที่ชอบ แล้วคัดลอกรายการสั่งซื้อเพื่อนำไปส่งให้ร้านได้เลย</p><a href="#menu" class="btn btn-outline">เลือกเมนูเพิ่ม →</a></div>
+        <div class="order-panel" aria-live="polite"><h3>รายการของคุณ</h3><ul class="order-list" id="orderList"><li class="empty">ยังไม่มีรายการ ลองเลือกเมนูด้านบนได้เลย</li></ul><div class="order-total"><span>รวมทั้งหมด</span><strong id="orderTotal">฿0</strong></div><button class="btn btn-primary copy" id="copyOrder" type="button">คัดลอกรายการสั่งซื้อ ↗</button><p class="copy-status" id="copyStatus" role="status"></p></div>
+      </div>
+    </section>
+  </main>
+  <footer><div class="footer-inner wrap"><span>© 2026 มันไก่ — อร่อยง่าย ๆ ในทุกวัน</span><span>เว็บไซต์ตัวอย่าง • แก้ชื่อร้าน ราคา และช่องทางติดต่อได้ในไฟล์นี้</span></div></footer>
+
+  <script>
+    const items = new Map();
+    const list = document.querySelector('#orderList');
+    const total = document.querySelector('#orderTotal');
+    const status = document.querySelector('#copyStatus');
+    const copyButton = document.querySelector('#copyOrder');
+
+    function renderOrder() {
+      if (!items.size) {
+        list.innerHTML = '<li class="empty">ยังไม่มีรายการ ลองเลือกเมนูด้านบนได้เลย</li>';
+        total.textContent = '฿0';
+        return;
+      }
+      list.innerHTML = [...items.entries()].map(([name, item]) =>
+        `<li><span>${name} × ${item.quantity}</span><strong>฿${item.price * item.quantity}</strong></li>`
+      ).join('');
+      total.textContent = `฿${[...items.values()].reduce((sum, item) => sum + item.price * item.quantity, 0)}`;
+    }
+
+    document.querySelectorAll('.add').forEach(button => {
+      button.addEventListener('click', () => {
+        const name = button.dataset.name;
+        const price = Number(button.dataset.price);
+        const current = items.get(name) || { price, quantity: 0 };
+        current.quantity++;
+        items.set(name, current);
+        renderOrder();
+        status.textContent = `เพิ่ม ${name} แล้ว`;
+      });
+    });
+
+    copyButton.addEventListener('click', async () => {
+      if (!items.size) { status.textContent = 'กรุณาเลือกเมนูก่อน'; return; }
+      const rows = [...items.entries()].map(([name, item]) => `${name} × ${item.quantity} = ${item.price * item.quantity} บาท`);
+      const amount = [...items.values()].reduce((sum, item) => sum + item.price * item.quantity, 0);
+      const orderText = `รายการสั่งซื้อจากร้านมันไก่\n${rows.join('\n')}\nรวม ${amount} บาท`;
+      try {
+        await navigator.clipboard.writeText(orderText);
+      } catch {
+        const field = document.createElement('textarea');
+        field.value = orderText;
+        document.body.appendChild(field);
+        field.select();
+        document.execCommand('copy');
+        field.remove();
+      }
+      status.textContent = 'คัดลอกรายการแล้ว นำไปส่งให้ร้านได้เลย';
+    });
+  </script>
+</body>
+</html>
